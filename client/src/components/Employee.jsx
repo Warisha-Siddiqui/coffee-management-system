@@ -10,7 +10,6 @@ const Employee = () => {
   const [updateEmployeeId, setUpdateEmployeeId] = useState("");
   const [deleteEmployeeId, setDeleteEmployeeId] = useState("");
 
-  // Form fields state
   const [formData, setFormData] = useState({
     employee_name: "",
     contact: "",
@@ -20,7 +19,6 @@ const Employee = () => {
     admin_id: 0,
   });
 
-  // Fetch employees from the backend
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
@@ -146,13 +144,22 @@ const Employee = () => {
     });
   };
 
-  const handleBack = () =>{
-    navigate("/dashboard");
-  }
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  const handleMarkAttendance = () => {
+    navigate("/employee/attendance");
+  };
 
   return (
     <div className="min-h-screen bg-orange-100 p-8">
-      <button className="bg-orange-400 px-2 mb-3 rounded-md py-1 text-white hover:bg-orange-500 " onClick={handleBack}>Back</button>
+      <button
+        className="bg-orange-400 py-2 px-4 mb-3 rounded-md text-white hover:bg-orange-500 "
+        onClick={handleBack}
+      >
+        Back
+      </button>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl mb-5 font-bold text-orange-700">
           Employee Management
@@ -173,6 +180,14 @@ const Employee = () => {
               className="p-1 w-20 rounded border border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
+
+          <button
+            onClick={handleMarkAttendance}
+            className="bg-[#5C4033] text-white text-sm px-3 py-2 rounded hover:bg-[#4A3328] transition"
+          >
+            Mark Attenance
+          </button>
+
           <button
             onClick={() => {
               setShowForm(!showForm);
